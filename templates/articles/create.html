@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if not object %}
+  <form 
+    action="." 
+    method="POST"
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    "
+  >
+    {% csrf_token %}
+
+    {{ form.as_p }}  
+    
+    <button type="submit">Create Article</button>
+  </form>
+{% else %}
+  <p>Your article was created</p>
+  <a href="/articles/{{ object.id }}/">
+    {{ object.title }} - {{ object.content }}
+  </a>
+{% endif %}
+{% endblock %}
