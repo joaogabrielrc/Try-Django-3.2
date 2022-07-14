@@ -8,7 +8,7 @@
   {% for item in object_list %}
     {% if item %}
       <li>
-        <a href="/articles/{{item.id}}/">
+        <a href="/articles/{{item.slug}}/">
           {{item.title}} - {{item.content}}
         </a>
       </li>

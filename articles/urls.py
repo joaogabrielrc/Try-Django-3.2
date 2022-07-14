@@ -10,5 +10,5 @@ from .views import (
 urlpatterns = [
   path('', article_serch_view),
   path('create/', article_create_view),
-  path('<int:id>/', article_detail_view)
+  path('<slug:slug>/', article_detail_view)
 ]
