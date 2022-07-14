@@ -4,11 +4,13 @@
 <h1>{{ object.title }} (id:{{ object.id }})</h1>
 <h2>{{ object.content }}</h2>
 
+<a href="{% url 'article-create' %}">Create Article</a>
+
 <ul>
   {% for item in object_list %}
     {% if item %}
       <li>
-        <a href="/articles/{{item.slug}}/">
+        <a href="{{ item.get_absolute_url }}">
           {{item.title}} - {{item.content}}
         </a>
       </li>
