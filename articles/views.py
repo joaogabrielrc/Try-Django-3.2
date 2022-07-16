@@ -7,16 +7,11 @@ from .forms import ArticleForm
 
 
 def article_serch_view(request):
-  query_dict = request.GET
-  query = query_dict.get('q')
-
-  try:
-    article_object = Article.objects.get(id=query)
-  except:
-    article_object = None
+  query = request.GET.get('q')    
+  queryset = Article.objects.search(query)
     
   context = {
-    'object': article_object
+    'object_list': queryset
   }
 
   return render(request, 'articles/search.html', context)

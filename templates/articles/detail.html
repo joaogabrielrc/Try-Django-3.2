@@ -2,5 +2,8 @@
 
 {% block content %}
 <h1>{{ object.title }}</h1>
-<h2>{{ object.content }}</h2>
+  {% if object.user %}
+    <p>Author: {{ object.user.username }}</p>
+  {% endif %}
+<p>{{ object.content }}</p>
 {% endblock %}
