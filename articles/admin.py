@@ -7,3 +7,4 @@ class ArticleAdmin(admin.ModelAdmin):
   list_display = ['id', 'title', 'slug', 'timestamp', 'updated']
   list_display_links = ['title']
   search_fields = ['id', 'title']
+  raw_id_fields = ['user']
