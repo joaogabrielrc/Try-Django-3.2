@@ -2,6 +2,7 @@ import pint
 
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 from recipes.utils import number_str_to_float
 
@@ -17,6 +18,9 @@ class Recipe(models.Model):
   updated = models.DateTimeField(auto_now=True)
   active = models.BooleanField(default=True)
 
+  def get_absoulute_url(self):
+    return reverse('recipes:detail', kwargs={'id', self.id})
+
 
 class RecipeIngredient(models.Model):
   recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
@@ -29,6 +33,9 @@ class RecipeIngredient(models.Model):
   timestamp = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now=True)
   active = models.BooleanField(default=True)
+
+  def get_absoulute_url(self):
+    return self.recipe.get_absoulute_url()
 
   def convert_to_system(self, system='mks'):
     if self.quantity_as_float is None:
